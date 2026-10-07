@@ -14,7 +14,9 @@ async function SingleProductPage({ params }: PageProps) {
   const { id } = await params;
   console.log('params:', id);
   const product = await fetchSingleProduct(id);
-  const { name, image, company, description, price } = product;
+  if (product) {
+    const { name, image, company, description, price } = product;
+  
   const dollarsAmount = formatCurrency(price);
   return (
     <section>
@@ -48,5 +50,6 @@ async function SingleProductPage({ params }: PageProps) {
       </div>
     </section>
   );
+}
 }
 export default SingleProductPage;
